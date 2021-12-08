@@ -1,6 +1,6 @@
 # COMO USAR</ br>
 
-  • Baixe o projeto em sua máquina;</ br>
+  • Baixe o projeto em sua máquina;<br />
   • Navegue até a pasta do repositório;</ br>
   • Execute o comando "yarn dev:server";</ br>
   
