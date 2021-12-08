@@ -17,7 +17,7 @@ const ProductModel = sequelize.define<IProductModel>(
             primaryKey: true
         },
         no_codigo: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             allowNull: false
         },
         tx_descricao: {
