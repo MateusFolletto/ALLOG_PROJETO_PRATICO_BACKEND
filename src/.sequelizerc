@@ -1,7 +1,10 @@
 const { resolve } = require('path');
 
 module.exports = {
-   config: resolve(dirname, 'src', 'configs', 'database.ts'),
-   'migrations-path': resolve(dirname, 'src', 'database', 'migrations'),
-   'seeders-path': resolve(__dirname, 'src', 'database', 'seeders')
+   config: resolve(__dirname, 'src', 'configs', 'database.ts'),
+   'models-path': path.resolve('src', 'models', 'models'),
+   'migrations-source-path': path.resolve('src', 'database', 'migrations'),
+   'migrations-compiled-path': path.resolve('dist', 'database', 'migrations'), 
+   'seeders-source-path': path.resolve('src', 'database', 'seeders'),
+   'seeders-compiled-path': path.resolve('dist', 'database', 'seeders'),
 };

@@ -31,6 +31,14 @@ const ProductModel = sequelize.define<IProductModel>(
         no_valor: {
             type: DataTypes.FLOAT(10,2),
             allowNull: false
+        },
+        dt_created_at: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        dt_updated_at: {
+            type: DataTypes.DATE,
+            allowNull: true
         }
     },
     {

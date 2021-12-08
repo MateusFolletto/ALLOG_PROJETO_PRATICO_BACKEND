@@ -1,6 +1,13 @@
 import { Request, Response } from 'express';
 import ProductModel from '../models/ProductModel';
 
+interface IProduct{
+    no_codigo: number;
+    tx_descricao: string;
+    no_quantidade: number;
+    no_valor: number;
+}
+
 export default {
     async index(req: Request, res: Response) {
         const result = await ProductModel.findAll();
@@ -31,7 +38,7 @@ export default {
             tx_descricao,
             no_quantidade,
             no_valor
-        } = req.body;
+        } = req.body as IProduct;
 
         const validation = await ProductModel.findAll({
             where: {
@@ -40,7 +47,7 @@ export default {
         })
 
         if(validation.length > 0) {
-            return res.status(403).json({message: 'Código de produto já existente.'})
+            return res.status(403).send('Código de produto já existente.')
         }
         else{
             const result = await ProductModel.create({
@@ -48,7 +55,7 @@ export default {
                 tx_descricao,
                 no_quantidade,
                 no_valor,
-                created_at: new Date(),
+                dt_created_at: new Date(),
             });
     
             return res.json(result);
@@ -70,7 +77,8 @@ export default {
                 no_codigo,
                 tx_descricao,
                 no_quantidade,
-                no_valor
+                no_valor,
+                dt_updated_at: new Date(),
             },
             {
                 where: { id }
@@ -80,6 +88,7 @@ export default {
     },
 
     async delete(req: Request, res: Response) {
+        console.log(req.params)
         const { id } = req.params
 
         const result = await ProductModel.destroy({
